@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block title %}{% trans "View Reminder" %}{% endblock %}
+
+{% block css %}
+<!-- Prevent robots from following or indexing this page -->
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<div>
+    <p>{{ object.subject }}</p>
+    <p>{{ object.message }}</p>
+    <p>{{ object.reminder }}</p>
+    {% if object.document %}<p><a href="{{ object.document.url }}">Document</a></p>{% endif %}
+    <a href="{% url "login" %}?next={% url "reminder_edit" pk=object.id %}">Edit</a>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block title %}{% trans "Add Reminder" %}{% endblock %}
+
+{% block content %}
+<p><a href="{% url "reminders_list" %}">{% trans "View Reminders" %}</a></p>
+<form action="{% url "reminder_add" %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <p><input type="submit" value="{% trans "Add" %}"></p>
+</form>
+{% endblock %}

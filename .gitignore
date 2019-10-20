@@ -1,0 +1,6 @@
+*~
+*.pyc
+*.sqlite3
+reminders_manager/local.py
+static/
+media/

@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block title %}{% trans "List Reminders" %}{% endblock %}
+
+{% block content %}
+<p><a href="{% url "reminder_add" %}">{% trans "Add Reminder" %}</a></p>
+<ul>
+    {% for item in object_list %}
+    <li><a href="{% url "reminder_edit" pk=item.id %}">{{ item.reminder|date }}: {{ item.subject|truncatechars:15 }}</a></li>
+    {% empty %}
+    <li>{% trans "No reminders found" %}</li>
+    {% endfor %}
+</ul>
+<p>
+    {% if page_obj.has_previous %}<a href="{% url "reminders_list" %}?page={{ page_obj.previous_page_number }}">&lt;&lt;{% trans "Previous" %}</a>{% endif %} {% if page_obj.has_next %}<a href="{% url "reminders_list" %}?page={{ page_obj.next_page_number }}">{% trans "Next" %}&gt;&gt;</a>{% endif %}
+</p>
+
+{% if request.user.is_authenticated %}
+<p><a href="{% url "logout" %}">Logout</a></p>
+{% else %}
+<p><a href="{% url "login" %}">Login</a></p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block title %}{% trans "Edit Reminder" %}{% endblock %}
+
+{% block content %}
+<p><a href="{% url "reminders_list" %}">{% trans "View Reminders" %}</a></p>
+<form action="{% url "reminder_edit" pk=form.instance.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <p><input type="submit" value="{% trans "Edit" %}"></p>
+</form>
+<a href="{% url "reminder_delete" pk=form.instance.id %}">Delete</a>
+{% endblock %}

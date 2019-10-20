@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<form action="{% url "login" %}" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{% if request.GET.next %}{{ next }}{% else %}{% url "reminders_list" %}{% endif %}">
+    <input type="submit" value="{% trans "Login" %}" />
+</form>
+<p><a href="{% url "signup" %}">Signup</a></p>
+{% endblock %}
