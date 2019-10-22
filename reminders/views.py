@@ -39,8 +39,9 @@ class ReminderCreateView(CreateView):
             form.instance.user = self.request.user
             form.instance.uuid = str(uuid.uuid4())
             doc_file = form.instance.document
-            _, file_ext = os.path.splitext(doc_file.name)
-            doc_file.name = "{0}{1}".format(form.instance.uuid, file_ext)
+            if doc_file:
+                _, file_ext = os.path.splitext(doc_file.name)
+                doc_file.name = "{0}{1}".format(form.instance.uuid, file_ext)
         else:
             form.add_error("reminder", "Invalid Login")
         return super(ReminderCreateView, self).form_valid(form)
