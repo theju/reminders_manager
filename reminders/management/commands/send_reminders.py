@@ -16,11 +16,11 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         today = timezone.now().today().date()
 
-        t_30 = today - datetime.timedelta(days=30)
-        t_14 = today - datetime.timedelta(days=14)
-        t_7 = today - datetime.timedelta(days=7)
-        t_1 = today - datetime.timedelta(days=1)
-        t_0 = today - datetime.timedelta(days=0)
+        t_30 = today + datetime.timedelta(days=30)
+        t_14 = today + datetime.timedelta(days=14)
+        t_7 = today + datetime.timedelta(days=7)
+        t_1 = today + datetime.timedelta(days=1)
+        t_0 = today + datetime.timedelta(days=0)
 
         qs = Reminder.objects.filter(
             Q(reminder__date=t_30)|
