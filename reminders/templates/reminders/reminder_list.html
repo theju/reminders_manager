@@ -6,7 +6,7 @@
 <p><a href="{% url "reminder_add" %}">{% trans "Add Reminder" %}</a></p>
 <ul>
     {% for item in object_list %}
-    <li><a href="{% url "reminder_edit" pk=item.id %}">{{ item.reminder|date }}: {{ item.subject|truncatechars:15 }}</a></li>
+    <li><a href="{% url "reminder_edit" pk=item.id %}">{{ item.reminder|date }}: {{ item.subject|truncatechars:50 }}</a></li>
     {% empty %}
     <li>{% trans "No reminders found" %}</li>
     {% endfor %}
