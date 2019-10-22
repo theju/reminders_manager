@@ -13,7 +13,7 @@ passed in as the context.
 A total of 5 email (from the user's signup) reminders (T-30, T-14, T-7, T-1 and T-0 days)
 are sent based on a script (`python manage.py send_reminders`) that is run from cron.
 
-## INSTALL
+## Install
 
 ```
 $ git clone https://github.com/theju/reminders_manager.git
@@ -22,12 +22,19 @@ $ pipenv shell
 $ python manage.py migrate
 ```
 
-## RUN THE DEV SERVER
+## Run the dev server
 
 ```
 $ cd reminders_manager
 $ python manage.py runserver
 ```
+
+## Things to do
+
+* Order Reminders by closest date first
+* Render subject template when displaying ListView
+* Add SMS support
+* Add a bit of styling
 
 ## LICENSE
 
