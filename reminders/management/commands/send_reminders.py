@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.utils import timezone
 from django.core.mail import send_mass_mail
+from django.contrib.sites.models import Site
 from django.template import Template, Context
 from django.core.management.base import BaseCommand, CommandError
 
@@ -32,7 +33,10 @@ class Command(BaseCommand):
         outputs = []
         from_email = settings.DEFAULT_FROM_EMAIL
         for reminder in qs:
-            ctx = Context({"reminder": reminder})
+            ctx = Context({
+                "site": Site.objects.get_current(),
+                "reminder": reminder
+            })
             reminder.subject = Template(reminder.subject).render(ctx)
             reminder.message = Template(reminder.message).render(ctx)
 

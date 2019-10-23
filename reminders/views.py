@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.template import Template, Context
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
@@ -104,6 +105,7 @@ class ReminderReadOnlyView(DetailView):
     def get_object(self):
         reminder =  Reminder.objects.get(uuid=self.kwargs.get("uuid"))
         ctx = Context({
+            "site": Site.objects.get_current(),
             "reminder": reminder
         })
         reminder.subject = Template(reminder.subject).render(ctx)
