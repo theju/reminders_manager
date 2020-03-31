@@ -32,8 +32,8 @@ class Command(BaseCommand):
         )
         outputs = []
         from_email = settings.DEFAULT_FROM_EMAIL
-        subject_tmpl = loader.get_template("email/reminder_subject.html")
-        message_tmpl = loader.get_template("email/reminder_message.html")
+        subject_tmpl = loader.get_template("email/reminder_subject.txt")
+        message_tmpl = loader.get_template("email/reminder_message.txt")
         for reminder in qs:
             ctx = {
                 "site": Site.objects.get_current(),

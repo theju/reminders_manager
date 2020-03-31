@@ -1,0 +1,4 @@
+Message: {{ reminder.message }}
+Reminder Date: {{ reminder.reminder }}
+
+{% if reminder.document %}{{ reminder.document.url }}{% endif %}
