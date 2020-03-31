@@ -1,0 +1,4 @@
+<p><strong>Message:</strong> {{ reminder.message }}</p>
+<p><strong>Reminder Date:</strong> {{ reminder.reminder }}</p>
+
+{% if reminder.document %}<p><a href="{{ reminder.document.url }}">{{ reminder.document.url }}</a></p>{% endif %}
