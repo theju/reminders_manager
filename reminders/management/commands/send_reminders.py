@@ -39,7 +39,7 @@ class Command(BaseCommand):
                 "site": Site.objects.get_current(),
                 "reminder": reminder
             }
-            subject = subject_tmpl.render(ctx)
+            subject = subject_tmpl.render(ctx).strip()
             message = message_tmpl.render(ctx)
 
             outputs.append((
