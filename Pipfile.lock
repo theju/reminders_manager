@@ -36,6 +36,7 @@
                 "sha256:d446183e84b8349fa3061f0fe7f06ca94ba65b426946ffebe6e3e8295332420c"
             ],
             "markers": "python_version >= '3.5'",
+            "index": "pypi",
             "version": "==0.4.4"
         }
     },
